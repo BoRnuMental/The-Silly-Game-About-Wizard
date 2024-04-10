@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f963beafba591a439b28d241e141bdf, type: 3}
+  m_Name: Spell Weights
+  m_EditorClassIdentifier: 
+  _spells:
+  - _spell: {fileID: -8592065349975217370, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 0
+  - _spell: {fileID: 1393610866902349713, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 0
+  - _spell: {fileID: 5492379952528503005, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 0
+  - _spell: {fileID: -2505731355029787808, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 0
+  - _spell: {fileID: -4778442178753308959, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 0
+  - _spell: {fileID: -8593564197911961036, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 1
