@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7622952403787937673}
   - component: {fileID: -6804310512650205769}
   - component: {fileID: 5800049688811225445}
+  - component: {fileID: 8247995953742240963}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1517821224, guid: 417c49a258118584e92aeb67f3e17a1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -149,18 +150,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.11935048}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.9166667, y: 1.0416666}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7, y: 0.82129896}
   m_EdgeRadius: 0
 --- !u!114 &7913344423990934495
 MonoBehaviour:
@@ -188,8 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beac4fbb0656597498b5b65eb1f0fe33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _checkGroundSize: {x: 0.9, y: 0.09}
-  _checkGroundOffset: {x: 0, y: -0.51}
+  _checkGroundSize: {x: 0.69, y: 0.07}
+  _checkGroundOffset: {x: 0, y: -0.53}
   _fallingGravityMultiplier: 3
 --- !u!114 &-6804310512650205769
 MonoBehaviour:
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca236b4adf808c4db1b20a8ec6b131b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultLevel: 3
+  _defaultLevel: 4
   _scaleLevels:
   - 0.3
   - 0.5
@@ -212,6 +213,7 @@ MonoBehaviour:
   - 1.3
   - 1.5
   - 1.8
+  - 2
 --- !u!114 &5800049688811225445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,3 +233,24 @@ MonoBehaviour:
   - 10
   - 15
   - 20
+--- !u!95 &8247995953742240963
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433245811520015246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b0a942b92b3ec144b3a58d13a69636c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

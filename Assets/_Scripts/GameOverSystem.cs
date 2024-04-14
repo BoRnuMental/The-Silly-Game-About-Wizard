@@ -1,14 +1,16 @@
 using UnityEngine;
 using Zenject;
 
-public class GameOverSystem : MonoBehaviour
+public class GameoverSystem : MonoBehaviour
 {
     private SignalBus _signalBus;
+    private Player _player;
 
     [Inject] 
-    private void Construct(SignalBus signalBus)
+    private void Construct(SignalBus signalBus, Player player)
     {
         _signalBus = signalBus;
+        _player = player;
     }
     private void Awake()
     {
@@ -23,17 +25,26 @@ public class GameOverSystem : MonoBehaviour
 
     private void PopPlayer()
     {
-        Debug.Log("Pop");
+        _player.gameObject.SetActive(false);
+        _signalBus.Fire<PlayerDiedSignal>();
+        // audio
+        // particles
     }
 
     private void VanishPlayer()
     {
-        Debug.Log("Vanish");
+        _player.gameObject.SetActive(false);
+        _signalBus.Fire<PlayerDiedSignal>();
+
+        //audio
     }
 
     private void KillPlayer()
     {
-        Debug.Log("Kill");
+        _player.gameObject.SetActive(false);
+        //animation
+        //audio
+        //particles
     }
 
     private void HandleSignal(PlayerScaleOutOfRangeSignal args)

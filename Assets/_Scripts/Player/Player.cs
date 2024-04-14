@@ -1,23 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent (typeof(PlayerController))]
 
 public class Player : MonoBehaviour
 {
-    [SerializeField, Min(0)] private float _speed;
-    [SerializeField, Min(0)] private float _jumpForce;
+    [SerializeField, Min(0f)] private float _speed;
+    [SerializeField, Min(0f)] private float _jumpForce;
 
     private PlayerController _controller;
-    private GameInput _gameInput;
+    private Animator _animator;
+    private Rigidbody2D _rb;
+    private SpriteRenderer _sr;
+
     private float _movementDirection;
+    private bool _jumped = false;
 
     public float Speed 
     { 
         get => _speed;
         set
         {
-            if (value < 0) return;
+            if (value < 0f) return;
             _speed = value;
         }
     }
@@ -25,38 +29,67 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
-        _gameInput = new GameInput();
-        _gameInput.Enable();
+        _animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
         ReadMovement();
+        ReadJump();
+        ReadFall();
+        SetAnimations();
     }
     private void FixedUpdate()
     {
         _controller.Move(_movementDirection, Speed);
     }
-    private void OnJumpPerformed(InputAction.CallbackContext context)
+    private void ReadJump()
     {
-        _controller.Jump(_jumpForce);
+        if (Input.GetAxisRaw("Jump") > 0f && !_jumped)
+        {
+            _controller.Jump(_jumpForce);
+            _animator.SetTrigger("Jump");
+            _jumped = true;
+        }
+        if (!_controller.IsGrounded)
+        {
+            _jumped = false;
+        }    
+    }
+    private void ReadFall()
+    {
+        if (Input.GetAxisRaw("Vertical") < 0f)
+        {
+            _controller.Fall();
+        }
     }
     private void ReadMovement()
     {
-        _movementDirection = _gameInput.Gameplay.Movement.ReadValue<float>();
+        _movementDirection = Input.GetAxisRaw("Horizontal");
     }
 
-    private void OnFallPerformed(InputAction.CallbackContext context)
+    private void SetAnimations()
     {
-        _controller.Fall();
+        _animator.SetBool("Falling", Vector2.Dot(new Vector2(0f, _rb.velocity.y).normalized, transform.up) < 0f);
+        _animator.SetBool("IsGrounded", _controller.IsGrounded);
+        _animator.SetBool("Running", _movementDirection != 0f);
+
+        if (Mathf.Abs(_rb.velocity.x) < 0.01f) return;
+
+        if (Vector2.Dot(transform.up, Vector2.up) > 0f)
+        {
+            _sr.flipX = _rb.velocity.x < 0f;
+        }
+        else
+        {
+            _sr.flipX = _rb.velocity.x > 0f;
+        }
     }
-    private void OnEnable()
+
+    private void OnDrawGizmos()
     {
-        _gameInput.Gameplay.Jump.performed += OnJumpPerformed;
-        _gameInput.Gameplay.Fall.performed += OnFallPerformed;
-    }
-    private void OnDisable()
-    {
-        _gameInput.Gameplay.Jump.performed -= OnJumpPerformed;
-        _gameInput.Gameplay.Fall.performed -= OnFallPerformed;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, transform.right);
     }
 }

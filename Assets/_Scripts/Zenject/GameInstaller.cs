@@ -1,15 +1,22 @@
 using UnityEngine;
 using Zenject;
-using System.Collections.Generic;
 
 public class GameInstaller : MonoInstaller
 {
+    [Header("Player"),SerializeField] private Player _player;
     [SerializeField] private Transform _spawnPoint;
+
+    [Space,Tooltip("Time before the game starts")]
     [SerializeField] private PrepareTimer _timer;
-    [SerializeField] private Player _player;
-    [SerializeField] private GameManager _gm;
-    [SerializeField] private MagicballSpawnSystem _spawnSystem;
-    [SerializeField] private SpellWeights _spellWeights;
+    [SerializeField] private SpellsData _spellsData;
+    [SerializeField] private TierColors _tierColors;
+
+    [Header("Systems"),SerializeField] private GameManager _gm;
+    [SerializeField] private MagicBallSpawnSystem _spawnSystem;
+
+    [Header("UI"), SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _gameOverMenu;
+
 
     public override void InstallBindings()
     {      
@@ -29,12 +36,14 @@ public class GameInstaller : MonoInstaller
     private void BindSystems()
     {
         Container.Bind<GameManager>().FromInstance(_gm).AsSingle();
-        Container.Bind<MagicballSpawnSystem>().FromInstance(_spawnSystem).AsSingle();
+        Container.Bind<MagicBallSpawnSystem>().FromInstance(_spawnSystem).AsSingle();
     }
 
     private void BindUI()
     {
         Container.BindInstance(_timer).AsSingle();
+        Container.BindInstance(_pauseMenu).WithId("PauseMenu");
+        Container.BindInstance(_gameOverMenu).WithId("GameOverMenu");
     }
 
     private void DeclareSignals()
@@ -45,13 +54,12 @@ public class GameInstaller : MonoInstaller
         Container.DeclareSignal<PlayerSpawnedSignal>().OptionalSubscriber();
         Container.DeclareSignal<PlayerScaleOutOfRangeSignal>().OptionalSubscriber();
         Container.DeclareSignal<PlayerDiedSignal>().OptionalSubscriber();
+        Container.DeclareSignal<PauseButtonPressed>().OptionalSubscriber();
     }
 
     private void BindSpells()
     {
-        Dictionary<BaseSpell, int> spells = new();
-        foreach (var spell in _spellWeights.Spells)
-            spells.Add(spell.Spell, spell.Weight);
-        Container.Bind<Dictionary<BaseSpell, int>>().FromInstance(spells).AsSingle();
+        Container.Bind<SpellsData>().FromInstance(_spellsData).AsSingle();
+        Container.Bind<TierColors>().FromInstance(_tierColors);
     }
 }

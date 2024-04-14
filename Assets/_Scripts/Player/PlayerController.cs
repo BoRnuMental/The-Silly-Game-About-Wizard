@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public bool IsGrounded { get; private set; } = false;
+    public bool IsFalling => _isFalling;
 
 
     private void Awake()
@@ -50,7 +51,9 @@ public class PlayerController : MonoBehaviour
     public void Fall()
     {
         if (IsGrounded || _isFalling) return;
-        _rb.gravityScale *= _fallingGravityMultiplier;
+        _rb.velocity = new Vector2(_rb.velocity.x, 0f);
+        _rb.AddForce(-transform.up * 10, ForceMode2D.Impulse);
+/*        _rb.gravityScale *= _fallingGravityMultiplier;*/
         _isFalling = true;
     }
 
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
             IsGrounded = true;
             if (_isFalling)
             {
-                _rb.gravityScale /= _fallingGravityMultiplier;
+/*                _rb.gravityScale /= _fallingGravityMultiplier;*/
                 _isFalling = false;
             }
         }

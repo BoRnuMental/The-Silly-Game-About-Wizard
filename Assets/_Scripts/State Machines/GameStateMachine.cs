@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Zenject;
 
 public class GameStateMachine
@@ -35,4 +36,4 @@ public class GameStateMachine
         CurrentState = _states[typeof(T)];
         CurrentState.Enter();
     }
-}
+} 

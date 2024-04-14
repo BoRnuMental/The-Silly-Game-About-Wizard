@@ -14,13 +14,14 @@ public class PrepareTimer : MonoBehaviour
     private void Construct(GameManager gameManager, SignalBus signalBus)
     {
         _signalBus = signalBus;
-        _timer = gameManager.PrepareTimer;
+        _timer = gameManager.PrepareTime;
         _timeLeft = _timer;
     }
 
     private void Awake()
     {
         _text = GetComponent<TMP_Text>();
+        _timeLeft = _timer;
     }
 
     private void Update()
@@ -30,15 +31,10 @@ public class PrepareTimer : MonoBehaviour
         if (_timeLeft < 0)
         {
             _timeLeft = 0;
-            _signalBus.TryFire<TimerEndedSignal>();
             enabled = false;
+            _signalBus.Fire<TimerEndedSignal>();
         }
         var time = TimeSpan.FromSeconds(_timeLeft);
         _text.text = $"{time.Seconds:00}:{time.Milliseconds / 10:00}";
-    }
-
-    private void OnEnable()
-    {
-        _timeLeft = _timer;
     }
 }

@@ -1,9 +1,10 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class MagicballSpawnSystem : MonoBehaviour
+public class MagicBallSpawnSystem : MonoBehaviour
 {
     [SerializeField] private List<Transform> _points;
     [Header("Difficulty")]
@@ -15,12 +16,12 @@ public class MagicballSpawnSystem : MonoBehaviour
    
     private DiContainer _container;
     private MonoPool<MagicBall> _pool;
-    private Dictionary<BaseSpell, int> _spellWeights;
+    private SpellsData _spellWeights;
     private bool _autoExpandPool = true;
     private float _frequency;
 
     [Inject]
-    private void Construct(DiContainer container, Dictionary<BaseSpell, int> spellWeight)
+    private void Construct(DiContainer container, SpellsData spellWeight)
     {
         _container = container;
         _pool = _container.Instantiate<MonoPool<MagicBall>>(new object[]{ _startObjectCount, _poolParent, _autoExpandPool });
@@ -31,8 +32,8 @@ public class MagicballSpawnSystem : MonoBehaviour
     {
         if (_spawnCountPerMinute != 0)
             _frequency = 60 / _spawnCountPerMinute;
-        foreach (var spell in _spellWeights.Keys)
-            _container.Inject(spell);
+        foreach (var spell in _spellWeights.Spells)
+            _container.Inject(spell.Spell);
     }
 
     private void Spawn()
@@ -42,27 +43,36 @@ public class MagicballSpawnSystem : MonoBehaviour
             Debug.Log("No free object");
             return;
         }
-        magicBall.SetSpell(GetRandomSpell());
-        var mover = magicBall.GetComponent<MagicballMover>();
+        magicBall.Spell = GetRandomSpell();
+        var mover = magicBall.GetComponent<MagicBallMover>();
         Transform randomPoint = _points[Random.Range(0, _points.Count)];
         magicBall.transform.position = randomPoint.position;
         Vector2 direction = new(0f - randomPoint.position.x, 0f);
         mover.Movement = new LinearMovement(magicBall.transform, direction.normalized, _speed);
+        FlipMagicBall(direction.normalized, magicBall.transform);
+        var color = magicBall.GetComponent<MagicBallColor>();
+        color.SetColor();
     }
 
     private BaseSpell GetRandomSpell()
     {
         int totalWeigth = 0;
-        foreach(var weigth in _spellWeights.Values)
-            totalWeigth += weigth;
+        foreach(var spellInfo in _spellWeights.Spells)
+            totalWeigth += spellInfo.Weight;
         int random = Random.Range(1, totalWeigth + 1);
         int sum = 0;
-        foreach(var spell in _spellWeights)
+        foreach(var spellInfo in _spellWeights.Spells)
         {
-            sum += spell.Value;
-            if (sum >= random) return spell.Key;
+            sum += spellInfo.Weight;
+            if (sum >= random) return spellInfo.Spell;
         }
         return null;
+    }
+
+    private void FlipMagicBall(Vector2 direction, Transform transform)
+    {
+        if (direction.x * transform.localScale.x < 0) 
+            transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1f, 1f, 1f));
     }
 
     private void OnEnable()

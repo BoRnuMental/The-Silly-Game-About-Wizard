@@ -67,7 +67,7 @@ public class MonoPool<T> where T : MonoBehaviour
     }
     private void LoadPrefab()
     {
-        _prefab = Resources.Load<GameObject>($"Prefabs/{typeof(T)}");
+        _prefab = Resources.Load<GameObject>($"Prefabs/{typeof(T)}/{typeof(T)}");
         if (!_prefab) Debug.LogWarning($"Cant find prefab with name {typeof(T)}");
     }
     private T CreateObject()

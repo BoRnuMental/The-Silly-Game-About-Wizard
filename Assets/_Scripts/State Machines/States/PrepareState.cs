@@ -14,11 +14,13 @@ public class PrepareState : GameState
 
     public override void Enter()
     {
+        Debug.Log("Prepare +");
         _timer.gameObject.SetActive(true);
     }
 
     public override void Exit()
     {
+        Debug.Log("Prepare -");
         _timer.gameObject.SetActive(false);
     }
 }

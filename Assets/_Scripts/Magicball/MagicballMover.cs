@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class MagicballMover : MonoBehaviour
+public class MagicBallMover : MonoBehaviour
 {
-    private BaseMagicballMovement _movement;
+    private BaseMagicBallMovement _movement;
 
-    public BaseMagicballMovement Movement 
+    public BaseMagicBallMovement Movement 
     { 
         get => _movement; 
         set => _movement = value ?? _movement; 

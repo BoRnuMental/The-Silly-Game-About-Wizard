@@ -3,13 +3,7 @@ using UnityEngine;
 
 public class MagicBall : MonoBehaviour
 {
-    private BaseSpell _spell;
-
-    public void SetSpell(BaseSpell spell) 
-    {
-        if (spell == null) throw new ArgumentNullException(spell.ToString());
-        _spell = spell;
-    }
+    public BaseSpell Spell { get; set; }
 
     private bool IsPlayer(Collider2D collision)
     {
@@ -20,7 +14,7 @@ public class MagicBall : MonoBehaviour
     {
         if (IsPlayer(collision))
         {
-            _spell?.DoMagic();
+            Spell?.DoMagic();
             gameObject.SetActive(false);
         }      
     }
