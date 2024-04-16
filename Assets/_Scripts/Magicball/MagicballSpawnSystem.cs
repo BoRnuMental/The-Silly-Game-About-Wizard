@@ -7,31 +7,35 @@ using Zenject;
 public class MagicBallSpawnSystem : MonoBehaviour
 {
     [SerializeField] private List<Transform> _points;
-    [Header("Difficulty")]
-    [SerializeField, Min(0f)] private float _speed;
-    [SerializeField, Min(0f)] private float _spawnCountPerMinute;
-    [Space]
     [SerializeField] private uint _startObjectCount; 
     [SerializeField] private Transform _poolParent;
    
     private DiContainer _container;
     private MonoPool<MagicBall> _pool;
     private SpellsData _spellWeights;
+    private DifficultySystem _difficultySystem;
     private bool _autoExpandPool = true;
-    private float _frequency;
+
+    private float Frequency
+    {
+        get
+        {
+            if (_difficultySystem.CountPerMinute <= 0) return 0;
+            return 60 / _difficultySystem.CountPerMinute;
+        }
+    }
 
     [Inject]
-    private void Construct(DiContainer container, SpellsData spellWeight)
+    private void Construct(DiContainer container, SpellsData spellWeight, DifficultySystem difficultySystem)
     {
         _container = container;
         _pool = _container.Instantiate<MonoPool<MagicBall>>(new object[]{ _startObjectCount, _poolParent, _autoExpandPool });
         _spellWeights = spellWeight;
+        _difficultySystem = difficultySystem;
     }
 
     private void Awake()
     {
-        if (_spawnCountPerMinute != 0)
-            _frequency = 60 / _spawnCountPerMinute;
         foreach (var spell in _spellWeights.Spells)
             _container.Inject(spell.Spell);
     }
@@ -48,7 +52,9 @@ public class MagicBallSpawnSystem : MonoBehaviour
         Transform randomPoint = _points[Random.Range(0, _points.Count)];
         magicBall.transform.position = randomPoint.position;
         Vector2 direction = new(0f - randomPoint.position.x, 0f);
-        mover.Movement = new LinearMovement(magicBall.transform, direction.normalized, _speed);
+        mover.Movement = new LinearMovement(magicBall.transform, direction.normalized,
+            Random.Range(_difficultySystem.MagicBallSpeed - _difficultySystem.SpeedRange / 2,
+            _difficultySystem.MagicBallSpeed + _difficultySystem.SpeedRange / 2));
         FlipMagicBall(direction.normalized, magicBall.transform);
         var color = magicBall.GetComponent<MagicBallColor>();
         color.SetColor();
@@ -56,10 +62,10 @@ public class MagicBallSpawnSystem : MonoBehaviour
 
     private BaseSpell GetRandomSpell()
     {
-        int totalWeigth = 0;
+        int totalWeight = 0;
         foreach(var spellInfo in _spellWeights.Spells)
-            totalWeigth += spellInfo.Weight;
-        int random = Random.Range(1, totalWeigth + 1);
+            totalWeight += spellInfo.Weight;
+        int random = Random.Range(1, totalWeight + 1);
         int sum = 0;
         foreach(var spellInfo in _spellWeights.Spells)
         {
@@ -86,10 +92,11 @@ public class MagicBallSpawnSystem : MonoBehaviour
 
     private IEnumerator SpawnWithDelay()
     {
-        while (true)
+        while (enabled)
         {
-            yield return new WaitForSeconds(_frequency);
-            if (_frequency != 0f) Spawn();
+            yield return new WaitForSeconds(Frequency);
+            Debug.Log(Frequency);
+            if (Frequency != 0f) Spawn();
         }   
     }
 }

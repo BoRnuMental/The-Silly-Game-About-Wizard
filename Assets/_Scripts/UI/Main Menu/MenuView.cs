@@ -6,7 +6,6 @@ using ModestTree;
 using System;
 using UnityEngine.SceneManagement;
 using System.Linq;
-using System.Collections.Generic;
 
 public class MenuView : BaseMenuView
 {
@@ -64,7 +63,7 @@ public class MenuView : BaseMenuView
     {
         var settings = GameSettingsStruct.Default;
         _fullScreen.isOn = settings.fullScreen;
-        _resolutions.value = Screen.resolutions.IndexOf(Screen.currentResolution);
+        _resolutions.value = Screen.resolutions.Length - 1;
         _globalVolume.value = settings.globalVolume;
         _musicVolume.value = settings.musicVolume;
     }

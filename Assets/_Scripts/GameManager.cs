@@ -49,12 +49,12 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayerDied()
     {
-        _stateMachine.EnterIn<GameoverState>();
+        _stateMachine.EnterIn<GameOverState>();
     }
 
     private void OnPause()
     {
-        if (_stateMachine.CurrentState is GameoverState) return;
+        if (_stateMachine.CurrentState is GameOverState) return;
         else if (_stateMachine.CurrentState is PauseState)
         {
             switch (_lastState)
@@ -62,8 +62,8 @@ public class GameManager : MonoBehaviour
                 case GameplayState:
                     _stateMachine.EnterIn<GameplayState>();
                     break;
-                case GameoverState:
-                    _stateMachine.EnterIn<GameoverState>();
+                case GameOverState:
+                    _stateMachine.EnterIn<GameOverState>();
                     break;
                 case PrepareState:
                     _stateMachine.EnterIn<PrepareState>();

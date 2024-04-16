@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class GameoverSystem : MonoBehaviour
+public class GameOverSystem : MonoBehaviour
 {
     private SignalBus _signalBus;
     private Player _player;

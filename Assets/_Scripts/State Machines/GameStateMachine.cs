@@ -20,7 +20,7 @@ public class GameStateMachine
         [typeof(EntryState)] =  new EntryState(),
         [typeof(PrepareState)] = new PrepareState(),
         [typeof(GameplayState)] = new GameplayState(),
-        [typeof(GameoverState)] = new GameoverState(),
+        [typeof(GameOverState)] = new GameOverState(),
         [typeof(PauseState)] = new PauseState(),
     };
 

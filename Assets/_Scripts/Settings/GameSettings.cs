@@ -79,9 +79,9 @@ public struct GameSettingsStruct
     public static GameSettingsStruct Default => new GameSettingsStruct
     {
         fullScreen = false,
-        resolution =  new (Screen.currentResolution.width, Screen.currentResolution.height),
-        refreshRateNumerator = Screen.currentResolution.refreshRateRatio.numerator,
-        refreshRateDenominator = Screen.currentResolution.refreshRateRatio.denominator,
+        resolution =  new(Screen.resolutions[Screen.resolutions.Length - 1].width, Screen.resolutions[Screen.resolutions.Length - 1].height),
+        refreshRateNumerator = Screen.resolutions[Screen.resolutions.Length - 1].refreshRateRatio.numerator,
+        refreshRateDenominator = Screen.resolutions[Screen.resolutions.Length - 1].refreshRateRatio.denominator,
         globalVolume = 1f,
         musicVolume = 1f,
     };
