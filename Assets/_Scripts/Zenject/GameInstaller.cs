@@ -16,7 +16,7 @@ public class GameInstaller : MonoInstaller
 
     [Header("UI"), SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _gameOverMenu;
-
+    [SerializeField] private GameObject _settings;
 
     public override void InstallBindings()
     {      
@@ -44,6 +44,7 @@ public class GameInstaller : MonoInstaller
         Container.BindInstance(_timer).AsSingle();
         Container.BindInstance(_pauseMenu).WithId("PauseMenu");
         Container.BindInstance(_gameOverMenu).WithId("GameOverMenu");
+        Container.BindInstance(_settings).WithId("Settings");
     }
 
     private void DeclareSignals()

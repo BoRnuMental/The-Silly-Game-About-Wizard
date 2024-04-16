@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
         if (IsGrounded || _isFalling) return;
         _rb.velocity = new Vector2(_rb.velocity.x, 0f);
         _rb.AddForce(-transform.up * 10, ForceMode2D.Impulse);
-/*        _rb.gravityScale *= _fallingGravityMultiplier;*/
         _isFalling = true;
     }
 
@@ -66,7 +65,6 @@ public class PlayerController : MonoBehaviour
             IsGrounded = true;
             if (_isFalling)
             {
-/*                _rb.gravityScale /= _fallingGravityMultiplier;*/
                 _isFalling = false;
             }
         }

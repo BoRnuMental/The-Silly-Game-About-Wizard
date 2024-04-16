@@ -10,8 +10,10 @@ public class MainMenuInstaller : MonoInstaller
         MenuPresenter presenter = new MenuPresenter();
         MenuModel model = new MenuModel();
 
-        Container.QueueForInject(new object[] { model, presenter, _view });
         Container.Bind<BaseMenuPresenter>().To<MenuPresenter>().FromInstance(presenter).AsSingle();
-        Container.Bind<BaseMenuModel>().To<MenuModel>().FromInstance(model).AsSingle();     
+        Container.Bind<BaseMenuModel>().To<MenuModel>().FromInstance(model).AsSingle();
+        Container.QueueForInject(model);
+        Container.QueueForInject(presenter);
+        Container.QueueForInject(_view);
     }
 }

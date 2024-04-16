@@ -1,0 +1,11 @@
+{
+    "fullScreen": false,
+    "resolution": {
+        "x": 640,
+        "y": 480
+    },
+    "refreshRateNumerator": 75,
+    "refreshRateDenominator": 1,
+    "globalVolume": 1.0,
+    "musicVolume": 1.0
+}

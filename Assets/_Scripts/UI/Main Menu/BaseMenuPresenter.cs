@@ -4,10 +4,6 @@ using Zenject;
 public abstract class BaseMenuPresenter
 {
     protected BaseMenuModel _model;
-    abstract public void OnNewGameButtonClicked();
-    abstract public void OnContinueButtonClicked();
-    abstract public void OnExitButtonClicked();
-    abstract public void OnSettingsApplyClicked();
-    abstract public void OnSettingsDefaultClicked();
+    abstract public void SetSettings(GameSettingsStruct settings);
+    abstract public GameSettingsStruct GetSettings();
 }
-

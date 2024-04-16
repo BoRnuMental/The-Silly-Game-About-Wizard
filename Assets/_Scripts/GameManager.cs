@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     private DiContainer _container;
     private GameStateMachine _stateMachine;
     private SignalBus _signalBus;
-/*    private GameInput _gameInput;*/
     private GameState _lastState;
     
 
@@ -30,7 +29,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         QualitySettings.maxQueuedFrames = 2;
-        Application.targetFrameRate = 100;
         _stateMachine = _container.Instantiate<GameStateMachine>();         
         _stateMachine.EnterIn<PrepareState>();
 

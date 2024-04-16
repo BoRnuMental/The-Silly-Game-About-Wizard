@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 public class MenuPresenter : BaseMenuPresenter
@@ -10,29 +7,13 @@ public class MenuPresenter : BaseMenuPresenter
     {
         _model = model;
     }
-
-    public override void OnNewGameButtonClicked()
+    public override void SetSettings(GameSettingsStruct settings)
     {
-        throw new System.NotImplementedException();
+        _model.SetSettings(settings);
     }
 
-    public override void OnContinueButtonClicked()
+    public override GameSettingsStruct GetSettings()
     {
-        throw new System.NotImplementedException();
+        return _model.GetSettings();
     }
-
-    public override void OnExitButtonClicked()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnSettingsApplyClicked()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnSettingsDefaultClicked()
-    {
-        throw new System.NotImplementedException();
-    }   
 }
