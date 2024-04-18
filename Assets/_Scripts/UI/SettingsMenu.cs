@@ -9,12 +9,14 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private Slider _musicVolume;
 
     private GameSettings _settings;
+    private SoundSystem _soundSystem;
 
     [Inject]
-    private void Construct(GameSettings settings)
+    private void Construct(GameSettings settings, SoundSystem soundSystem)
     {
         _settings = settings;
         _settings.Load();
+        _soundSystem = soundSystem;
     }
     private void OnEnable()
     {
@@ -35,5 +37,7 @@ public class SettingsMenu : MonoBehaviour
             musicVolume = _musicVolume.value
         };
         _settings.Save(settings);
+        _soundSystem.ChangeGlobalVolume(settings.globalVolume);
+        _soundSystem.ChangeMusicVolume(settings.musicVolume);
     }
 }

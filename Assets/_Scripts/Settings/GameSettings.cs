@@ -90,7 +90,7 @@ public struct GameSettingsStruct
         resolution =  new(Screen.resolutions[0].width, Screen.resolutions[0].height),
         refreshRateNumerator = Screen.resolutions[0].refreshRateRatio.numerator,
         refreshRateDenominator = Screen.resolutions[0].refreshRateRatio.denominator,
-        globalVolume = 1f,
-        musicVolume = 1f,
+        globalVolume = 0.5f,
+        musicVolume = 0.5f,
     };
 }

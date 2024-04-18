@@ -181,11 +181,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 1}
-    m_HighlightedColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 1}
-    m_PressedColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 1}
-    m_SelectedColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 1}
-    m_DisabledColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 0.5019608}
+    m_NormalColor: {r: 0.34117648, g: 0.3647059, b: 0.50980395, a: 1}
+    m_HighlightedColor: {r: 0.31253076, g: 0.33408463, b: 0.467, a: 1}
+    m_PressedColor: {r: 0.28977692, g: 0.30976155, b: 0.433, a: 1}
+    m_SelectedColor: {r: 0.34117648, g: 0.3647059, b: 0.50980395, a: 1}
+    m_DisabledColor: {r: 0.34117648, g: 0.3647059, b: 0.50980395, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -206,7 +206,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1744631997}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UIClick
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &98923740
 GameObject:
@@ -416,8 +428,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294965642
+  m_fontColor: {r: 0.5411765, g: 0.9764706, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -661,6 +673,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1744631997}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UIClick
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1019245078}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -792,7 +816,7 @@ RectTransform:
   m_Father: {fileID: 701099022}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.4854855, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -809,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3512376, g: 0.38955435, b: 0.645, a: 1}
+  m_Color: {r: 0.62887496, g: 0.67725, b: 0.946, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -896,11 +920,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 1}
-    m_HighlightedColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 1}
-    m_PressedColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 1}
-    m_SelectedColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 1}
-    m_DisabledColor: {r: 0.3019608, g: 0.3372549, b: 0.5529412, a: 0.5019608}
+    m_NormalColor: {r: 0.34117648, g: 0.3647059, b: 0.50980395, a: 1}
+    m_HighlightedColor: {r: 0.32189998, g: 0.3441, b: 0.48099998, a: 1}
+    m_PressedColor: {r: 0.30316153, g: 0.32406923, b: 0.45299998, a: 1}
+    m_SelectedColor: {r: 0.34117648, g: 0.3647059, b: 0.50980395, a: 1}
+    m_DisabledColor: {r: 0.34117648, g: 0.3647059, b: 0.50980395, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -945,7 +969,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1744631997}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UIClick
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &359137407
 MonoBehaviour:
@@ -1215,6 +1251,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1744631997}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UIClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &417095221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,6 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _view: {fileID: 1913336773}
+  _soundSystem: {fileID: 1744631997}
 --- !u!1 &504834193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,7 +1392,7 @@ RectTransform:
   m_Father: {fileID: 997217725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.68000007}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1360,7 +1409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20000002, g: 0.22352943, b: 0.3803922, a: 1}
+  m_Color: {r: 0.34117648, g: 0.3647059, b: 0.50980395, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1451,8 +1500,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294965642
+  m_fontColor: {r: 0.5411765, g: 0.9764706, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1569,7 +1618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.30059403, g: 0.33338606, b: 0.552, a: 1}
+  m_Color: {r: 0.33969885, g: 0.36582956, b: 0.511, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1644,7 +1693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.18079208, g: 0.20051482, b: 0.33200002, a: 1}
+  m_Color: {r: 0.34117648, g: 0.3647059, b: 0.50980395, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1798,7 +1847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.22352943, g: 0.24705884, b: 0.38823533, a: 1}
+  m_Color: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1932,7 +1981,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 504834194}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.68000007
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1950,7 +1999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1764706, g: 0.19607845, b: 0.3372549, a: 1}
+  m_Color: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2116,11 +2165,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.22745098, g: 0.2509804, b: 0.38431373, a: 1}
-    m_HighlightedColor: {r: 0.26040816, g: 0.28734696, b: 0.44, a: 1}
-    m_PressedColor: {r: 0.20595917, g: 0.22726531, b: 0.348, a: 1}
-    m_SelectedColor: {r: 0.227451, g: 0.2509804, b: 0.38431376, a: 1}
-    m_DisabledColor: {r: 0.227451, g: 0.2509804, b: 0.38431376, a: 0.5019608}
+    m_NormalColor: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
+    m_HighlightedColor: {r: 0.39853007, g: 0.42725295, b: 0.59599996, a: 1}
+    m_PressedColor: {r: 0.298, g: 0.3187907, b: 0.447, a: 1}
+    m_SelectedColor: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
+    m_DisabledColor: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2149,6 +2198,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1744631997}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UIApplyClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &713895916
@@ -2189,6 +2250,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713895913}
   m_CullTransparentMesh: 1
+--- !u!1 &714292422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 714292423}
+  - component: {fileID: 714292424}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &714292423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714292422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1744631998}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &714292424
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714292422}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 1311563171966916070, guid: 306fce2a75a67c241b617390f3522ec7, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 5ff13b2a73e15814980dc95869b4ddc3, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &768639478
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,11 +2438,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.22745098, g: 0.2509804, b: 0.38431373, a: 1}
-    m_HighlightedColor: {r: 0.26040816, g: 0.28734696, b: 0.44, a: 1}
-    m_PressedColor: {r: 0.20595917, g: 0.22726531, b: 0.348, a: 1}
-    m_SelectedColor: {r: 0.227451, g: 0.2509804, b: 0.38431376, a: 1}
-    m_DisabledColor: {r: 0.227451, g: 0.2509804, b: 0.38431376, a: 0.5019608}
+    m_NormalColor: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
+    m_HighlightedColor: {r: 0.39853007, g: 0.42725295, b: 0.59599996, a: 1}
+    m_PressedColor: {r: 0.298, g: 0.3187907, b: 0.447, a: 1}
+    m_SelectedColor: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
+    m_DisabledColor: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2282,6 +2471,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1744631997}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UIClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &768639481
@@ -2605,8 +2806,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 239251332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.188, y: 0}
-  m_AnchorMax: {x: 0.188, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2623,7 +2824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20469919, g: 0.22721992, b: 0.3773585, a: 1}
+  m_Color: {r: 0.37645832, g: 0.41989577, b: 0.695, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2714,8 +2915,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294965642
+  m_fontColor: {r: 0.5411765, g: 0.9764706, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2971,7 +3172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.24313727, b: 0.3921569, a: 1}
+  m_Color: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3105,10 +3306,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 308405868}
   m_HandleRect: {fileID: 1341689324}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.486
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3345,8 +3546,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294965642
+  m_fontColor: {r: 0.5411765, g: 0.9764706, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3615,8 +3816,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294966198
+  m_fontColor: {r: 0.7122642, g: 0.98524433, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3701,7 +3902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1098234099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3766,7 +3967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21568629, g: 0.2392157, b: 0.39607847, a: 1}
+  m_Color: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3841,7 +4042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.18079208, g: 0.20051482, b: 0.33200002, a: 1}
+  m_Color: {r: 0.34117648, g: 0.3647059, b: 0.50980395, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3985,7 +4186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.24313727, b: 0.3921569, a: 1}
+  m_Color: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4230,11 +4431,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.22745098, g: 0.2509804, b: 0.38431373, a: 1}
-    m_HighlightedColor: {r: 0.26040816, g: 0.28734696, b: 0.44, a: 1}
-    m_PressedColor: {r: 0.20595917, g: 0.22726531, b: 0.348, a: 1}
-    m_SelectedColor: {r: 0.227451, g: 0.2509804, b: 0.38431376, a: 1}
-    m_DisabledColor: {r: 0.227451, g: 0.2509804, b: 0.38431376, a: 0.5019608}
+    m_NormalColor: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
+    m_HighlightedColor: {r: 0.39853007, g: 0.42725295, b: 0.59599996, a: 1}
+    m_PressedColor: {r: 0.298, g: 0.3187907, b: 0.447, a: 1}
+    m_SelectedColor: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
+    m_DisabledColor: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4277,16 +4478,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1639793796}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1913336773}
+        m_TargetAssemblyTypeName: MenuView, Assembly-CSharp
+        m_MethodName: ShowBestTime
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1744631997}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UIReturnClick
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1243631633
@@ -4395,8 +4608,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1310380932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.4854855, y: 0}
+  m_AnchorMax: {x: 0.4854855, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4413,7 +4626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20469919, g: 0.22721992, b: 0.3773585, a: 1}
+  m_Color: {r: 0.37645832, g: 0.41989577, b: 0.695, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4471,7 +4684,7 @@ RectTransform:
   m_Father: {fileID: 1863749306}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.188, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4488,7 +4701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3512376, g: 0.38955435, b: 0.645, a: 1}
+  m_Color: {r: 0.62887496, g: 0.67725, b: 0.946, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7237,10 +7450,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1365440392}
   m_HandleRect: {fileID: 865322488}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.188
+  m_Value: 0.001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7310,8 +7523,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294965642
+  m_fontColor: {r: 0.5411765, g: 0.9764706, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7572,8 +7785,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294965642
+  m_fontColor: {r: 0.5411765, g: 0.9764706, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7658,7 +7871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1639793797
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7828,6 +8041,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1744631997}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UIClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1659206303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7932,8 +8157,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294965642
+  m_fontColor: {r: 0.5411765, g: 0.9764706, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8000,6 +8225,156 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677000267}
   m_CullTransparentMesh: 1
+--- !u!1 &1744631995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1744631998}
+  - component: {fileID: 1744631997}
+  - component: {fileID: 1744631996}
+  m_Layer: 0
+  m_Name: SoundSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1744631996
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744631995}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5926039527166269526, guid: 306fce2a75a67c241b617390f3522ec7, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1744631997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744631995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f8bb33dc0f6c643b2519cd41a46b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: UIClick
+    sound: {fileID: 8300000, guid: 24deb5762b50f684db6bfe6d417c1fa6, type: 3}
+  - name: UIReturnClick
+    sound: {fileID: 8300000, guid: 2ee55734464159a478864bc4d9146092, type: 3}
+  - name: UIApplyClick
+    sound: {fileID: 8300000, guid: 6c83fef3bcf95cb4d8e8c47d4edb09a7, type: 3}
+  _audioMixer: {fileID: 24100000, guid: 306fce2a75a67c241b617390f3522ec7, type: 2}
+--- !u!4 &1744631998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744631995}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 714292423}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1804271063
 GameObject:
   m_ObjectHideFlags: 0
@@ -8276,7 +8651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.24313727, b: 0.3921569, a: 1}
+  m_Color: {r: 0.45882356, g: 0.49411768, b: 0.6901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8393,8 +8768,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294965642
+  m_fontColor: {r: 0.5411765, g: 0.9764706, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8604,5 +8979,6 @@ SceneRoots:
   - {fileID: 1480493172}
   - {fileID: 1913336772}
   - {fileID: 708078356}
+  - {fileID: 1744631998}
   - {fileID: 927326122}
   - {fileID: 214458039}

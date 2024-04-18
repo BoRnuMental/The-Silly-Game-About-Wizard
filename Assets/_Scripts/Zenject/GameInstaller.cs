@@ -16,6 +16,7 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private MagicBallSpawnSystem _spawnSystem;
     [SerializeField] private DifficultySystem _difficultySystem;
     [SerializeField] private BestTimeSystem _bestTimeSystem;
+    [SerializeField] private SoundSystem _soundSystem;
 
     [Header("UI"), SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _gameOverMenu;
@@ -42,6 +43,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<MagicBallSpawnSystem>().FromInstance(_spawnSystem).AsSingle();
         Container.Bind<DifficultySystem>().FromInstance(_difficultySystem).AsSingle();
         Container.Bind<BestTimeSystem>().FromInstance(_bestTimeSystem).AsSingle();
+        Container.Bind<SoundSystem>().FromInstance(_soundSystem).AsSingle();
     }
 
     private void BindUI()

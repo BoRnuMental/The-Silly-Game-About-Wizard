@@ -15,20 +15,23 @@ public class MenuView : BaseMenuView
     [SerializeField] private Slider _musicVolume;
     [SerializeField] private GameObject _bestTime;
 
+    private float _time;
+    private SoundSystem _soundSystem;
+
     [Inject]
-    private void Construct(BaseMenuPresenter presenter)
+    private void Construct(BaseMenuPresenter presenter, SoundSystem soundSystem)
     {
         _presenter = presenter;
+        _soundSystem = soundSystem;
     }
 
     private void Awake()
     {
-        var time = SaveLoadSystem.LoadBestTime();
-        if (time > 0f)
+        _time = SaveLoadSystem.LoadBestTime();
+        if (_time > 0f)
         {
-            _bestTime.SetActive(true);
-
-            var timeSpan = TimeSpan.FromSeconds(time);
+            ShowBestTime();
+            var timeSpan = TimeSpan.FromSeconds(_time);
             var text = _bestTime.GetComponentInChildren<TMP_Text>();
             if (timeSpan.Hours > 0)
             {
@@ -38,60 +41,14 @@ public class MenuView : BaseMenuView
             text.text += $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
         }
     }
-    /*
-        private void OnEnable()
-        {
-            var screenResolutions = Screen.resolutions.Reverse().ToArray();
-            var settings = _presenter.GetSettings();
-            _resolutions.options.Clear();
-            for (int i = 0; i < screenResolutions.Length; i++)
-            {
-                _resolutions.options.Add(
-                    new TMP_Dropdown.OptionData(
-                        $"{screenResolutions[i].width}x{screenResolutions[i].height} " +
-                        $"{Math.Round(screenResolutions[i].refreshRateRatio.value, 1)} hz"));
-            }
-            Resolution resolution = new() 
-            {
-                width = settings.resolution.x, 
-                height = settings.resolution.y, 
-                refreshRateRatio = new RefreshRate() 
-                { 
-                    numerator = settings.refreshRateNumerator,
-                    denominator = settings.refreshRateDenominator 
-                } 
-            };
-            _resolutions.value = GetResolutionIndex(resolution);
-            _fullScreen.isOn = settings.fullScreen;
-            _globalVolume.value = settings.globalVolume;
-            _musicVolume.value = settings.musicVolume;
-            var time = SaveLoadSystem.LoadBestTime();
-            if ( time > 0f)
-            {
-                _bestTime.SetActive(true);
 
-                var timeSpan = TimeSpan.FromSeconds(time);
-                var text = _bestTime.GetComponentInChildren<TMP_Text>();
-                if (timeSpan.Hours > 0)
-                {
-                    text.text += $"{timeSpan.Hours:00}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
-                    return;
-                }
-                text.text += $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
-            }
-        }
-        private int GetResolutionIndex(Resolution resolution)
+    public void ShowBestTime()
+    {
+        if (_time > 0f)
         {
-            var screenResolutions = Screen.resolutions.Reverse().ToArray();
-            for (int i = 0; i < screenResolutions.Length; i++)
-            {
-                if (screenResolutions[i].width == resolution.width &&
-                    screenResolutions[i].height == resolution.height &&
-                    screenResolutions[i].refreshRateRatio.value == resolution.refreshRateRatio.value) return i;
-            }
-            return -1;
+            _bestTime.SetActive(true);
         }
-    */
+    }
     public override void OnDefaultButtonClicked()
     {
         var settings = GameSettingsStruct.Default;
@@ -114,6 +71,8 @@ public class MenuView : BaseMenuView
             musicVolume = _musicVolume.value
         };
         _presenter.SetSettings(settings);
+        _soundSystem.ChangeGlobalVolume(settings.globalVolume);
+        _soundSystem.ChangeMusicVolume(settings.musicVolume);
     }
 
     public override void OnPlayButtonClicked()
