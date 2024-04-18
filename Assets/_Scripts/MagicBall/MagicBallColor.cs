@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Zenject;
@@ -31,18 +30,12 @@ public class MagicBallColor : MonoBehaviour
         _magicBall = GetComponent<MagicBall>();
         _sr = GetComponent<SpriteRenderer>();
         _light = GetComponentInChildren<Light2D>();
-
-
+        _sr.sortingOrder = transform.parent.childCount;
     }
     public void SetColor()
     {
         if (_magicBall.Spell == null) return;
         _sr.color = _colors[_magicBall.Spell];
-/*        if (_sr.color == _tierColorPairs[MagicBallTier.Deadly])
-        {
-            _light.color = new Color(0.41f, 0f, 0.77f, 1f);
-            return;
-        }*/
         _light.color = _sr.color;
     }
 }

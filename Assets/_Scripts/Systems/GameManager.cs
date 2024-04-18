@@ -26,8 +26,10 @@ public class GameManager : MonoBehaviour
         _container = container;
         _signalBus = signalBus;
     }
+
     private void Awake()
     {
+        Cursor.visible = false;
         QualitySettings.maxQueuedFrames = 2;
         _stateMachine = _container.Instantiate<GameStateMachine>();         
         _stateMachine.EnterIn<PrepareState>();
@@ -35,6 +37,14 @@ public class GameManager : MonoBehaviour
         _signalBus.Subscribe<TimerHiddenSignal>(OnPrepareTimerEnded);
         _signalBus.Subscribe<PlayerDiedSignal>(OnPlayerDied);
         _signalBus.Subscribe<PauseButtonPressed>(OnPause);
+    }
+
+    private void Update()
+    {
+        if (!Application.isFocused && _stateMachine.CurrentState is not PauseState)
+        {
+            OnPause();
+        }
     }
     private void OnDestroy()
     {
@@ -74,7 +84,6 @@ public class GameManager : MonoBehaviour
         {
             _lastState = _stateMachine.CurrentState;
             _stateMachine.EnterIn<PauseState>();
-        }
-                  
+        }            
     }
 }

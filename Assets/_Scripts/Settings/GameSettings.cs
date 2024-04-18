@@ -22,13 +22,13 @@ public class GameSettings
 
     public void Save(GameSettingsStruct settings)
     {      
-        SaveLoadSystem.Save(settings);
+        SaveLoadSystem.SaveSettings(settings);
         Set(settings);
     }
 
     public void Load()
     {
-        var settings = SaveLoadSystem.Load();
+        var settings = SaveLoadSystem.LoadSettings();
         Set(settings);
     }
 
@@ -44,13 +44,21 @@ public class GameSettings
                 numerator = settings.refreshRateNumerator,
                 denominator = settings.refreshRateDenominator,
             }
-        };
-        
+        };     
 
         _globalVolume = settings.globalVolume;
         _musicVolume = settings.musicVolume;
         Screen.SetResolution(_resolution.width, _resolution.height, _fullScreen);
         Application.targetFrameRate = (int)_resolution.refreshRateRatio.value;
+
+        if (_fullScreen)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
 
@@ -79,9 +87,9 @@ public struct GameSettingsStruct
     public static GameSettingsStruct Default => new GameSettingsStruct
     {
         fullScreen = false,
-        resolution =  new(Screen.resolutions[Screen.resolutions.Length - 1].width, Screen.resolutions[Screen.resolutions.Length - 1].height),
-        refreshRateNumerator = Screen.resolutions[Screen.resolutions.Length - 1].refreshRateRatio.numerator,
-        refreshRateDenominator = Screen.resolutions[Screen.resolutions.Length - 1].refreshRateRatio.denominator,
+        resolution =  new(Screen.resolutions[0].width, Screen.resolutions[0].height),
+        refreshRateNumerator = Screen.resolutions[0].refreshRateRatio.numerator,
+        refreshRateDenominator = Screen.resolutions[0].refreshRateRatio.denominator,
         globalVolume = 1f,
         musicVolume = 1f,
     };

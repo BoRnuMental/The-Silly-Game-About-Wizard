@@ -21,6 +21,7 @@ public class PauseState : GameState
     }
     public override void Enter()
     {
+        Cursor.visible = true;
         _player.enabled = false;
         DOTween.TogglePauseAll();
         _pauseMenu.SetActive(true);
@@ -30,6 +31,7 @@ public class PauseState : GameState
 
     public override void Exit()
     {
+        Cursor.visible = false;
         _player.enabled = true;   
         DOTween.TogglePauseAll();
         _pauseMenu.SetActive(false);

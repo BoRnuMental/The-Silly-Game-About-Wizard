@@ -1,15 +1,13 @@
-using System;
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 public class GameOverState : GameState
 {
-
+    private DifficultySystem _difficultySystem;
     private MagicBallSpawnSystem _spawnSystem;
     private GameObject _gameOver;
-    private DifficultySystem _difficultySystem;
+    private Stopwatch _stopwatch;
     private float _delay;
 
     [Inject]
@@ -17,16 +15,20 @@ public class GameOverState : GameState
         [Inject(Id = "GameOverMenu")] GameObject gameOver,
         MagicBallSpawnSystem spawnSystem,   
         GameManager gameManager,
-        DifficultySystem difficultySystem)
+        DifficultySystem difficultySystem,
+        Stopwatch stopwatch)
     {
         _difficultySystem = difficultySystem;
         _spawnSystem = spawnSystem;
         _gameOver = gameOver;
         _delay = gameManager.ShowGameOverDelay;
+        _stopwatch = stopwatch;
     }
     public override void Enter()
     {
+        Cursor.visible = true;
         _spawnSystem.gameObject.SetActive(true);
+        _stopwatch.Hide();
         _difficultySystem.gameObject.SetActive(false);
         _spawnSystem.StartCoroutine(WaitForSeconds());
     }

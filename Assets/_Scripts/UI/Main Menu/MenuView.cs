@@ -2,10 +2,10 @@ using Zenject;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using ModestTree;
 using System;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using DG.Tweening;
 
 public class MenuView : BaseMenuView
 {
@@ -13,6 +13,7 @@ public class MenuView : BaseMenuView
     [SerializeField] private Toggle _fullScreen;
     [SerializeField] private Slider _globalVolume;
     [SerializeField] private Slider _musicVolume;
+    [SerializeField] private GameObject _bestTime;
 
     [Inject]
     private void Construct(BaseMenuPresenter presenter)
@@ -20,45 +21,77 @@ public class MenuView : BaseMenuView
         _presenter = presenter;
     }
 
-    private void OnEnable()
+    private void Awake()
     {
-        var screenResolutions = Screen.resolutions.Reverse().ToArray();
-        var settings = _presenter.GetSettings();
-        _resolutions.options.Clear();
-        for (int i = 0; i < screenResolutions.Length; i++)
+        var time = SaveLoadSystem.LoadBestTime();
+        if (time > 0f)
         {
-            _resolutions.options.Add(
-                new TMP_Dropdown.OptionData(
-                    $"{screenResolutions[i].width}x{screenResolutions[i].height} " +
-                    $"{Math.Round(screenResolutions[i].refreshRateRatio.value, 1)} hz"));
-        }
-        Resolution resolution = new() 
-        {
-            width = settings.resolution.x, 
-            height = settings.resolution.y, 
-            refreshRateRatio = new RefreshRate() 
-            { 
-                numerator = settings.refreshRateNumerator,
-                denominator = settings.refreshRateDenominator 
-            } 
-        };
-        _resolutions.value = GetResolutionIndex(resolution);
-        _fullScreen.isOn = settings.fullScreen;
-        _globalVolume.value = settings.globalVolume;
-        _musicVolume.value = settings.musicVolume;
-    }
-    private int GetResolutionIndex(Resolution resolution)
-    {
-        var screenResolutions = Screen.resolutions.Reverse().ToArray();
-        for (int i = 0; i < screenResolutions.Length; i++)
-        {
-            if (screenResolutions[i].width == resolution.width &&
-                screenResolutions[i].height == resolution.height &&
-                screenResolutions[i].refreshRateRatio.value == resolution.refreshRateRatio.value) return i;
-        }
-        return -1;
-    }
+            _bestTime.SetActive(true);
 
+            var timeSpan = TimeSpan.FromSeconds(time);
+            var text = _bestTime.GetComponentInChildren<TMP_Text>();
+            if (timeSpan.Hours > 0)
+            {
+                text.text += $"{timeSpan.Hours:00}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
+                return;
+            }
+            text.text += $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
+        }
+    }
+    /*
+        private void OnEnable()
+        {
+            var screenResolutions = Screen.resolutions.Reverse().ToArray();
+            var settings = _presenter.GetSettings();
+            _resolutions.options.Clear();
+            for (int i = 0; i < screenResolutions.Length; i++)
+            {
+                _resolutions.options.Add(
+                    new TMP_Dropdown.OptionData(
+                        $"{screenResolutions[i].width}x{screenResolutions[i].height} " +
+                        $"{Math.Round(screenResolutions[i].refreshRateRatio.value, 1)} hz"));
+            }
+            Resolution resolution = new() 
+            {
+                width = settings.resolution.x, 
+                height = settings.resolution.y, 
+                refreshRateRatio = new RefreshRate() 
+                { 
+                    numerator = settings.refreshRateNumerator,
+                    denominator = settings.refreshRateDenominator 
+                } 
+            };
+            _resolutions.value = GetResolutionIndex(resolution);
+            _fullScreen.isOn = settings.fullScreen;
+            _globalVolume.value = settings.globalVolume;
+            _musicVolume.value = settings.musicVolume;
+            var time = SaveLoadSystem.LoadBestTime();
+            if ( time > 0f)
+            {
+                _bestTime.SetActive(true);
+
+                var timeSpan = TimeSpan.FromSeconds(time);
+                var text = _bestTime.GetComponentInChildren<TMP_Text>();
+                if (timeSpan.Hours > 0)
+                {
+                    text.text += $"{timeSpan.Hours:00}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
+                    return;
+                }
+                text.text += $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
+            }
+        }
+        private int GetResolutionIndex(Resolution resolution)
+        {
+            var screenResolutions = Screen.resolutions.Reverse().ToArray();
+            for (int i = 0; i < screenResolutions.Length; i++)
+            {
+                if (screenResolutions[i].width == resolution.width &&
+                    screenResolutions[i].height == resolution.height &&
+                    screenResolutions[i].refreshRateRatio.value == resolution.refreshRateRatio.value) return i;
+            }
+            return -1;
+        }
+    */
     public override void OnDefaultButtonClicked()
     {
         var settings = GameSettingsStruct.Default;
@@ -85,6 +118,7 @@ public class MenuView : BaseMenuView
 
     public override void OnPlayButtonClicked()
     {
+        DOTween.KillAll();
         SceneManager.LoadScene("Gameplay", LoadSceneMode.Single);
     }
 }
