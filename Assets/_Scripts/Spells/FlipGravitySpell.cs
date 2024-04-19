@@ -6,13 +6,15 @@ public class FlipGravitySpell : BaseSpell
     private Player _player;
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
+    private SoundSystem _soundSystem;
 
     [Inject]
-    private void Construct(Player player)
+    private void Construct(Player player, SoundSystem soundSystem)
     {
         _player = player;
         _rb = _player.GetComponent<Rigidbody2D>();
         _sr = _player.GetComponent<SpriteRenderer>();
+        _soundSystem = soundSystem;
     }
 
     public override void DoMagic()
@@ -22,6 +24,6 @@ public class FlipGravitySpell : BaseSpell
         _player.transform.rotation *= rotation;
         _rb.gravityScale = -_rb.gravityScale;
         _sr.flipX = !_sr.flipX;
-
+        _soundSystem.PlaySound("GameplayFlipGravity");
     }
 }

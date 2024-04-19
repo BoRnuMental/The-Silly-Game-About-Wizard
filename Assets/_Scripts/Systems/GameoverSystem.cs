@@ -5,12 +5,14 @@ public class GameOverSystem : MonoBehaviour
 {
     private SignalBus _signalBus;
     private Player _player;
+    private SoundSystem _soundSystem;
 
     [Inject] 
-    private void Construct(SignalBus signalBus, Player player)
+    private void Construct(SignalBus signalBus, Player player, SoundSystem soundSystem)
     {
         _signalBus = signalBus;
         _player = player;
+        _soundSystem = soundSystem;
     }
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class GameOverSystem : MonoBehaviour
     {
         _player.gameObject.SetActive(false);
         _signalBus.Fire<PlayerDiedSignal>();
-        // audio
+        _soundSystem.PlaySound("GameplayPop"); 
         // particles
     }
 
@@ -35,15 +37,13 @@ public class GameOverSystem : MonoBehaviour
     {
         _player.gameObject.SetActive(false);
         _signalBus.Fire<PlayerDiedSignal>();
-
-        //audio
+        _soundSystem.PlaySound("GameplayVanish");
     }
 
     private void KillPlayer()
     {
         _player.gameObject.SetActive(false);
         //animation
-        //audio
         //particles
     }
 

@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent (typeof(PlayerController))]
 
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
+    private SoundSystem _soundSystem;
 
     private float _movementDirection;
     private bool _jumped = false;
@@ -24,6 +26,12 @@ public class Player : MonoBehaviour
             if (value < 0f) return;
             _speed = value;
         }
+    }
+
+    [Inject]
+    private void Construct(SoundSystem soundSystem)
+    {
+        _soundSystem = soundSystem;
     }
 
     private void Awake()
@@ -50,6 +58,7 @@ public class Player : MonoBehaviour
         {
             _controller.Jump(_jumpForce);
             _animator.SetTrigger("Jump");
+            /*_soundSystem.PlaySound("GameplayJump");*/
             _jumped = true;
         }
         if (!_controller.IsGrounded)

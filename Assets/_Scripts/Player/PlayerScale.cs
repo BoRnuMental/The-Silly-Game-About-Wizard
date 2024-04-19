@@ -19,12 +19,13 @@ public class PlayerScale : MonoBehaviour
     private int _currentLevel;
     private Player _player;
     private SignalBus _signalBus;
+    private SoundSystem _soundSystem;
 
     [Inject]
-    private void Construct(SignalBus signalBus)
-
+    private void Construct(SignalBus signalBus, SoundSystem soundSystem)
     {
         _signalBus = signalBus;
+        _soundSystem = soundSystem;
     }
 
 
@@ -42,6 +43,7 @@ public class PlayerScale : MonoBehaviour
             return;
         }
         _player.transform.localScale = Vector2.one * _scaleLevels[++_currentLevel];
+        _soundSystem.PlaySound("GameplayIncreaseScale");
     }
 
     public void DecreaseScale()
@@ -52,5 +54,6 @@ public class PlayerScale : MonoBehaviour
             return;
         }
         _player.transform.localScale = Vector2.one * _scaleLevels[--_currentLevel];
+        _soundSystem.PlaySound("GameplayDecreaseScale");
     }
 }
