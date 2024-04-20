@@ -34,7 +34,8 @@ public class SettingsMenu : MonoBehaviour
             refreshRateNumerator = _settings.Resolution.refreshRateRatio.numerator,
             refreshRateDenominator = _settings.Resolution.refreshRateRatio.denominator,
             globalVolume = _globalVolume.value,
-            musicVolume = _musicVolume.value
+            musicVolume = _musicVolume.value,
+            localizationId = _settings.LocalizationId,
         };
         _settings.Save(settings);
         _soundSystem.ChangeGlobalVolume(settings.globalVolume);

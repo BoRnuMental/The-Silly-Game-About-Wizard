@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Runtime.Serialization;
 using UnityEngine;
 public static class SaveLoadSystem
 {
@@ -17,9 +16,6 @@ public static class SaveLoadSystem
     }
     public static void SaveSettings(GameSettingsStruct settings)
     {
-#if UNITY_EDITOR
-        return;
-#else
         string json = JsonUtility.ToJson(settings, true);
         try
         {
@@ -29,7 +25,6 @@ public static class SaveLoadSystem
         {
             Debug.LogWarning("Can't save the settings file");
         }
-#endif
     }
     public static GameSettingsStruct LoadSettings()
     {
@@ -60,7 +55,7 @@ public static class SaveLoadSystem
         }
         catch
         {
-            Debug.LogWarning("Can't save the settings file");
+            Debug.LogWarning("Can't save the best time file");
         }
     }
 }

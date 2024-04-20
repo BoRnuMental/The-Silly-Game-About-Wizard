@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: StringLocalization Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: StringLocalization
+  m_TableCollectionNameGuidString: 05f9f2d38050d4b49b70614bfa1991f1
+  m_Entries:
+  - m_Id: 293882306560
+    m_Key: ExitButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 641334255616
+    m_Key: FullScreenToggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 973049176064
+    m_Key: GlobalVolumeSlider
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1136543145984
+    m_Key: MusicVolumeSlider
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1275378802688
+    m_Key: ReturnButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31553757184
+    m_Key: PlayButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 486019178496
+    m_Key: ResolutionDropDown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376044527616
+    m_Key: SettingsButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1423362236416
+    m_Key: ApplyButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1504131948544
+    m_Key: DefaultButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7587944734720
+    m_Key: YourRecordText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20007941578752
+    m_Key: LanguageDropDown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28065270865920
+    m_Key: PauseText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29155303366656
+    m_Key: GameOverText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29389572022272
+    m_Key: RestartButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29697979195392
+    m_Key: NewRecordText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32115047538688
+    m_Key: LowDangerText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32295641686016
+    m_Key: MediumDangerText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32585619087360
+    m_Key: HighDangerText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32740783169536
+    m_Key: BindingsText
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1099593456935501848
+  references:
+    version: 2
+    RefIds:
+    - rid: 1099593456935501848
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1713618895101

@@ -14,6 +14,8 @@ public class MenuView : BaseMenuView
     [SerializeField] private Slider _globalVolume;
     [SerializeField] private Slider _musicVolume;
     [SerializeField] private GameObject _bestTime;
+    [SerializeField] private TMP_Text _bestTimeText;
+    [SerializeField] private TMP_Dropdown _localizationId;
 
     private float _time;
     private SoundSystem _soundSystem;
@@ -27,26 +29,22 @@ public class MenuView : BaseMenuView
 
     private void Awake()
     {
+        ShowBestTime();
+    }
+
+    private void ShowBestTime()
+    {
         _time = SaveLoadSystem.LoadBestTime();
         if (_time > 0f)
         {
-            ShowBestTime();
+            _bestTime.SetActive(true);
             var timeSpan = TimeSpan.FromSeconds(_time);
-            var text = _bestTime.GetComponentInChildren<TMP_Text>();
             if (timeSpan.Hours > 0)
             {
-                text.text += $"{timeSpan.Hours:00}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
+                _bestTimeText.text = $"{timeSpan.Hours:00}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
                 return;
             }
-            text.text += $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
-        }
-    }
-
-    public void ShowBestTime()
-    {
-        if (_time > 0f)
-        {
-            _bestTime.SetActive(true);
+            _bestTimeText.text = $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
         }
     }
     public override void OnDefaultButtonClicked()
@@ -56,6 +54,7 @@ public class MenuView : BaseMenuView
         _resolutions.value = Screen.resolutions.Length - 1;
         _globalVolume.value = settings.globalVolume;
         _musicVolume.value = settings.musicVolume;
+        _localizationId.value = settings.localizationId;
     }
 
     public override void OnApplyButtonClicked()
@@ -68,8 +67,12 @@ public class MenuView : BaseMenuView
             refreshRateNumerator = newResolution.refreshRateRatio.numerator,
             refreshRateDenominator = newResolution.refreshRateRatio.denominator,  
             globalVolume = _globalVolume.value,
-            musicVolume = _musicVolume.value
+            musicVolume = _musicVolume.value,
+            localizationId = _localizationId.value
         };
+
+        if (_presenter.GetSettings().Equals(settings)) return;
+
         _presenter.SetSettings(settings);
         _soundSystem.ChangeGlobalVolume(settings.globalVolume);
         _soundSystem.ChangeMusicVolume(settings.musicVolume);

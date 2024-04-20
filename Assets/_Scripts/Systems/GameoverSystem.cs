@@ -44,7 +44,6 @@ public class GameOverSystem : MonoBehaviour
     {
         _player.gameObject.SetActive(false);
         //animation
-        //particles
     }
 
     private void HandleSignal(PlayerScaleOutOfRangeSignal args)

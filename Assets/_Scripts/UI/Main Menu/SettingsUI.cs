@@ -8,9 +8,11 @@ using Zenject;
 public class SettingsUI : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown _resolutions;
+    [SerializeField] private TMP_Dropdown _language;
     [SerializeField] private Toggle _fullScreen;
     [SerializeField] private Slider _globalVolume;
     [SerializeField] private Slider _musicVolume;
+
     private BaseMenuPresenter _presenter;
 
     [Inject]
@@ -45,6 +47,7 @@ public class SettingsUI : MonoBehaviour
         _fullScreen.isOn = settings.fullScreen;
         _globalVolume.value = settings.globalVolume;
         _musicVolume.value = settings.musicVolume;
+        _language.value = settings.localizationId;
     }
     private int GetResolutionIndex(Resolution resolution)
     {

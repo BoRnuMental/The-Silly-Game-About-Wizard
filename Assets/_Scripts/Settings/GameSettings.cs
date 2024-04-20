@@ -1,14 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class GameSettings
 {
-
     private bool _fullScreen;
     private Resolution _resolution;
 
     private float _globalVolume;
     private float _musicVolume;
+
+    private int _localizationId;
 
     public GameSettings()
     {
@@ -19,6 +21,8 @@ public class GameSettings
     public Resolution Resolution => _resolution;
     public float GlobalVolume => _globalVolume;
     public float MusicVolume => _musicVolume;
+
+    public int LocalizationId => _localizationId;
 
     public void Save(GameSettingsStruct settings)
     {      
@@ -48,17 +52,14 @@ public class GameSettings
 
         _globalVolume = settings.globalVolume;
         _musicVolume = settings.musicVolume;
+        _localizationId = settings.localizationId;
+
         Screen.SetResolution(_resolution.width, _resolution.height, _fullScreen);
         Application.targetFrameRate = (int)_resolution.refreshRateRatio.value;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localizationId];
 
-        if (_fullScreen)
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
+        if (_fullScreen) Cursor.lockState = CursorLockMode.Confined;
+        else Cursor.lockState = CursorLockMode.None;
     }
 }
 
@@ -74,7 +75,9 @@ public struct GameSettingsStruct
     public float globalVolume;
     public float musicVolume;
 
-    public GameSettingsStruct(bool fullScreen, Resolution resolution, float globalVolume, float musicVolume)
+    public int localizationId;
+
+    public GameSettingsStruct(bool fullScreen, Resolution resolution, float globalVolume, float musicVolume, int localizationId)
     {
         this.fullScreen = fullScreen;
         this.resolution = new(resolution.width, resolution.height);
@@ -82,6 +85,7 @@ public struct GameSettingsStruct
         this.refreshRateDenominator = resolution.refreshRateRatio.denominator;
         this.globalVolume = globalVolume;
         this.musicVolume = musicVolume;
+        this.localizationId = localizationId;
     }
 
     public static GameSettingsStruct Default => new GameSettingsStruct
@@ -92,5 +96,21 @@ public struct GameSettingsStruct
         refreshRateDenominator = Screen.resolutions[0].refreshRateRatio.denominator,
         globalVolume = 0.5f,
         musicVolume = 0.5f,
+        localizationId = 0
     };
+
+    public override bool Equals(object obj)
+    {
+        if (obj == null) return false;
+        if (obj is not GameSettingsStruct) return false;
+        GameSettingsStruct settings = (GameSettingsStruct) obj;
+        if (fullScreen == settings.fullScreen &&
+            resolution == settings.resolution &&
+            refreshRateNumerator == settings.refreshRateNumerator &&
+            refreshRateDenominator == settings.refreshRateDenominator &&
+            globalVolume == settings.globalVolume &&
+            musicVolume == settings.musicVolume &&
+            localizationId == settings.localizationId) return true;
+        return false;
+    }
 }

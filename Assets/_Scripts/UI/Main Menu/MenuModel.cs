@@ -41,6 +41,7 @@ public class MenuModel : BaseMenuModel
             refreshRateDenominator = _settings.Resolution.refreshRateRatio.denominator,
             globalVolume = _settings.GlobalVolume,
             musicVolume = _settings.MusicVolume,
+            localizationId = _settings.LocalizationId
         };
     }
 }
