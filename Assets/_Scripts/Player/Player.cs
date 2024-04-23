@@ -13,10 +13,10 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
-    private SoundSystem _soundSystem;
 
     private float _movementDirection;
     private bool _jumped = false;
+    private bool _axisInUse = false;
 
     public float Speed 
     { 
@@ -26,12 +26,6 @@ public class Player : MonoBehaviour
             if (value < 0f) return;
             _speed = value;
         }
-    }
-
-    [Inject]
-    private void Construct(SoundSystem soundSystem)
-    {
-        _soundSystem = soundSystem;
     }
 
     private void Awake()
@@ -56,15 +50,14 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxisRaw("Jump") > 0f && !_jumped)
         {
+            if (_axisInUse) return;
             _controller.Jump(_jumpForce);
             _animator.SetTrigger("Jump");
-            /*_soundSystem.PlaySound("GameplayJump");*/
             _jumped = true;
+            _axisInUse = true;
         }
-        if (!_controller.IsGrounded)
-        {
-            _jumped = false;
-        }    
+        if (!_controller.IsGrounded) _jumped = false;
+        if (Input.GetAxisRaw("Jump") == 0f) _axisInUse = false;
     }
     private void ReadFall()
     {
@@ -85,15 +78,10 @@ public class Player : MonoBehaviour
         _animator.SetBool("Running", _movementDirection != 0f);
 
         if (Mathf.Abs(_rb.velocity.x) < 0.01f) return;
-
         if (Vector2.Dot(transform.up, Vector2.up) > 0f)
-        {
             _sr.flipX = _rb.velocity.x < 0f;
-        }
         else
-        {
             _sr.flipX = _rb.velocity.x > 0f;
-        }
     }
 
     private void OnDrawGizmos()

@@ -13,21 +13,24 @@ MonoBehaviour:
   m_Name: Spells Data
   m_EditorClassIdentifier: 
   _spells:
+  - _spell: {fileID: -2505731355029787808, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 5
+    _tier: 1
+  - _spell: {fileID: 5492379952528503005, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 4
+    _tier: 2
+  - _spell: {fileID: -4778442178753308959, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 4
+    _tier: 2
   - _spell: {fileID: 1393610866902349713, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
     _weight: 3
     _tier: 3
-  - _spell: {fileID: 5492379952528503005, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
-    _weight: 2
-    _tier: 2
-  - _spell: {fileID: -2505731355029787808, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
-    _weight: 3
-    _tier: 1
-  - _spell: {fileID: -4778442178753308959, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
-    _weight: 3
-    _tier: 1
   - _spell: {fileID: -8592065349975217370, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
     _weight: 2
     _tier: 3
+  - _spell: {fileID: -2868847580610400758, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
+    _weight: 2
+    _tier: 3
   - _spell: {fileID: -8593564197911961036, guid: d31c21b96c5ac4e4892ae5266efd6a40, type: 3}
-    _weight: 1
+    _weight: 2
     _tier: 4

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rb;
     private bool _isFalling = false;
+    private SoundSystem _soundSystem;
 
     private Vector3 PositionWithOffset
     {
@@ -27,6 +29,11 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded { get; private set; } = false;
     public bool IsFalling => _isFalling;
 
+    [Inject]
+    private void Construct(SoundSystem soundSystem)
+    {
+        _soundSystem = soundSystem;
+    }
 
     private void Awake()
     {
@@ -45,7 +52,10 @@ public class PlayerController : MonoBehaviour
     public void Jump(float force)
     {
         if (IsGrounded)
+        {
             _rb.AddForce(transform.up * force, ForceMode2D.Impulse);
+            _soundSystem.PlaySound("GameplayJump");
+        }        
     }
 
     public void Fall()
@@ -59,14 +69,11 @@ public class PlayerController : MonoBehaviour
     private void CheckGround()
     {
         var scaledSize = Vector2.Scale(_checkGroundSize, transform.localScale);
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(PositionWithOffset, scaledSize, transform.rotation.z);
-        if (colliders.Length > 2) // player + camera border = 2
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(PositionWithOffset, scaledSize, transform.rotation.z, LayerMask.GetMask("Level"));
+        if (colliders.Length > 0)
         {
             IsGrounded = true;
-            if (_isFalling)
-            {
-                _isFalling = false;
-            }
+            if (_isFalling) _isFalling = false;
         }
         else IsGrounded = false;          
     }

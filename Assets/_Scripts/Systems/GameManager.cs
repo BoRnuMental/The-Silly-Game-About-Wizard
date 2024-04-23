@@ -41,10 +41,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_EDITOR
+        return;
+#else
         if (!Application.isFocused && _stateMachine.CurrentState is not PauseState)
         {
             OnPause();
         }
+#endif
     }
     private void OnDestroy()
     {

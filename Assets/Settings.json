@@ -1,12 +1,12 @@
 {
     "fullScreen": true,
     "resolution": {
-        "x": 640,
-        "y": 480
+        "x": 1920,
+        "y": 1080
     },
     "refreshRateNumerator": 75,
     "refreshRateDenominator": 1,
-    "globalVolume": 0.5267953872680664,
-    "musicVolume": 0.23165029287338258,
-    "localizationId": 0
+    "globalVolume": 0.6160218715667725,
+    "musicVolume": 0.239956796169281,
+    "localizationId": 1
 }

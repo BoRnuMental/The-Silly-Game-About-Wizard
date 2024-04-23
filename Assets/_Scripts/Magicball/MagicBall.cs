@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class MagicBall : MonoBehaviour
@@ -17,5 +16,12 @@ public class MagicBall : MonoBehaviour
             Spell?.DoMagic();
             gameObject.SetActive(false);
         }      
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, transform.right);
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, transform.up);
     }
 }

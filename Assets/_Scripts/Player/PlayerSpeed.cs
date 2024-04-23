@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 
 public class PlayerSpeed : MonoBehaviour
 {
@@ -9,13 +8,6 @@ public class PlayerSpeed : MonoBehaviour
     private int _currentLevel;
     private Player _player;
     private Animator _animator;
-    private SoundSystem _soundSystem;
-
-    [Inject] 
-    private void Construct(SoundSystem soundSystem)
-    {
-        _soundSystem = soundSystem;
-    }
 
     private void Awake()
     {
@@ -28,8 +20,7 @@ public class PlayerSpeed : MonoBehaviour
     {
         if (_currentLevel >= _speedLevels.Length - 1) return;
         _player.Speed = _speedLevels[++_currentLevel];
-        CalculateAnimationSpeed();
-        _soundSystem.PlaySound("GameplayIncreaseSpeed");   
+        CalculateAnimationSpeed();  
     }
 
     public void DecreaseSpeed()
@@ -37,7 +28,6 @@ public class PlayerSpeed : MonoBehaviour
         if (_currentLevel <= 0) return;
         _player.Speed = _speedLevels[--_currentLevel];
         CalculateAnimationSpeed();
-        _soundSystem.PlaySound("GameplayDecreaseSpeed");
     }
 
     private void CalculateAnimationSpeed()

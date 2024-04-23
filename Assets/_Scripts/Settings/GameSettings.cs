@@ -21,7 +21,6 @@ public class GameSettings
     public Resolution Resolution => _resolution;
     public float GlobalVolume => _globalVolume;
     public float MusicVolume => _musicVolume;
-
     public int LocalizationId => _localizationId;
 
     public void Save(GameSettingsStruct settings)
