@@ -29,14 +29,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = false;
+       // Cursor.visible = false;
         QualitySettings.maxQueuedFrames = 2;
         _stateMachine = _container.Instantiate<GameStateMachine>();         
         _stateMachine.EnterIn<PrepareState>();
 
         _signalBus.Subscribe<TimerHiddenSignal>(OnPrepareTimerEnded);
         _signalBus.Subscribe<PlayerDiedSignal>(OnPlayerDied);
-        _signalBus.Subscribe<PauseButtonPressed>(OnPause);
+        _signalBus.Subscribe<PauseButtonPressedSignal>(OnPause);
     }
 
     private void Update()
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         _signalBus.Unsubscribe<TimerHiddenSignal>(OnPrepareTimerEnded);
         _signalBus.Unsubscribe<PlayerDiedSignal>(OnPlayerDied);
-        _signalBus.Unsubscribe<PauseButtonPressed>(OnPause);
+        _signalBus.Unsubscribe<PauseButtonPressedSignal>(OnPause);
     }
     private void OnPrepareTimerEnded()
     {

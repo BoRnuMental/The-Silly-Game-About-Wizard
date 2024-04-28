@@ -17,6 +17,7 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private DifficultySystem _difficultySystem;
     [SerializeField] private BestTimeSystem _bestTimeSystem;
     [SerializeField] private SoundSystem _soundSystem;
+    [SerializeField] private SpellPopupSpawnSystem _popupSpawnSystem;
 
     [Header("UI"), SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _gameOverMenu;
@@ -45,6 +46,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<DifficultySystem>().FromInstance(_difficultySystem).AsSingle();
         Container.Bind<BestTimeSystem>().FromInstance(_bestTimeSystem).AsSingle();
         Container.Bind<SoundSystem>().FromInstance(_soundSystem).AsSingle();
+        Container.Bind<SpellPopupSpawnSystem>().FromInstance(_popupSpawnSystem).AsSingle();
     }
 
     private void BindUI()
@@ -65,7 +67,8 @@ public class GameInstaller : MonoInstaller
         Container.DeclareSignal<PlayerSpawnedSignal>().OptionalSubscriber();
         Container.DeclareSignal<PlayerScaleOutOfRangeSignal>().OptionalSubscriber();
         Container.DeclareSignal<PlayerDiedSignal>().OptionalSubscriber();
-        Container.DeclareSignal<PauseButtonPressed>().OptionalSubscriber();
+        Container.DeclareSignal<PauseButtonPressedSignal>().OptionalSubscriber();
+        Container.DeclareSignal<PlayerHitSignal>().OptionalSubscriber();
     }
 
     private void BindSpells()

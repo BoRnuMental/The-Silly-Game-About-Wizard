@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: SpellDescriptions_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 17d9238cc373e2144ab4f2d74117d4e7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 30463238144
+    m_Localized: Acceleration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422026682368
+    m_Localized: Deceleration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731029446656
+    m_Localized: Magnification
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1490873753600
+    m_Localized: Reduction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1891538837504
+    m_Localized: Game over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2280589893632
+    m_Localized: Trajectory changed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2759768154112
+    m_Localized: Gravity fliped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1143244402466816
+    m_Localized: Trampoline
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

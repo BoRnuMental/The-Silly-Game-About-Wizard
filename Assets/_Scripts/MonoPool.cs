@@ -59,12 +59,6 @@ public class MonoPool<T> where T : MonoBehaviour
         result = null;
         return false;
     }
-
-    public void ReturnObject(T obj)
-    {
-        obj.gameObject.SetActive(false);
-        obj.transform.localPosition = Vector3.zero;
-    }
     private void LoadPrefab()
     {
         _prefab = Resources.Load<GameObject>($"Prefabs/{typeof(T)}/{typeof(T)}");

@@ -13,6 +13,6 @@ public class ShowPause : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            _signalBus.Fire<PauseButtonPressed>();
+            _signalBus.Fire<PauseButtonPressedSignal>();
     }
 }
