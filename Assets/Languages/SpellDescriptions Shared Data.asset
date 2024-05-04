@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: Trampoline
     m_Metadata:
       m_Items: []
+  - m_Id: 2508574659977216
+    m_Key: Hallucination
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

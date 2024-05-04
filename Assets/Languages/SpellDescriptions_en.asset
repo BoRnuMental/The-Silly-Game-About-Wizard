@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: Trampoline
     m_Metadata:
       m_Items: []
+  - m_Id: 2508574659977216
+    m_Localized: Hallucination
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -26,7 +26,6 @@ public class SpellPopupSpawnSystem : MonoBehaviour
         popup.position = playerHit.position;
         var local = popup.GetComponentInChildren<LocalizeStringEvent>();
         local.StringReference.SetReference("SpellDescriptions", _keys[playerHit.spell]);
-
         /*var popup = Instantiate(_prefab, playerHit.position, Quaternion.identity, _parent);
         var local = popup.GetComponentInChildren<LocalizeStringEvent>();
         local.StringReference.SetReference("SpellDescriptions", _keys[playerHit.spell]);*/

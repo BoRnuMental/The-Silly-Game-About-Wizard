@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
@@ -18,6 +19,7 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private BestTimeSystem _bestTimeSystem;
     [SerializeField] private SoundSystem _soundSystem;
     [SerializeField] private SpellPopupSpawnSystem _popupSpawnSystem;
+    [SerializeField] private Volume _volume;
 
     [Header("UI"), SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _gameOverMenu;
@@ -47,6 +49,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<BestTimeSystem>().FromInstance(_bestTimeSystem).AsSingle();
         Container.Bind<SoundSystem>().FromInstance(_soundSystem).AsSingle();
         Container.Bind<SpellPopupSpawnSystem>().FromInstance(_popupSpawnSystem).AsSingle();
+        Container.Bind<Volume>().FromInstance(_volume).AsSingle();
     }
 
     private void BindUI()
