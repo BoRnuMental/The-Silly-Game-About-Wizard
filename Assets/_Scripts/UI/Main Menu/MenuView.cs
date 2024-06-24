@@ -16,19 +16,24 @@ public class MenuView : BaseMenuView
     [SerializeField] private GameObject _bestTime;
     [SerializeField] private TMP_Text _bestTimeText;
     [SerializeField] private TMP_Dropdown _localizationId;
+    [SerializeField] private SceneLoader _sceneLoader;
 
     private float _time;
     private SoundSystem _soundSystem;
+    private FadeInOut _fade;
 
     [Inject]
-    private void Construct(BaseMenuPresenter presenter, SoundSystem soundSystem)
+    private void Construct(BaseMenuPresenter presenter, SoundSystem soundSystem, FadeInOut fade)
     {
         _presenter = presenter;
         _soundSystem = soundSystem;
+        _fade = fade;
     }
 
     private void Awake()
     {
+        _fade.gameObject.SetActive(true);
+        _fade.FadeOut();
         ShowBestTime();
     }
 
@@ -81,6 +86,6 @@ public class MenuView : BaseMenuView
     public override void OnPlayButtonClicked()
     {
         DOTween.KillAll();
-        SceneManager.LoadScene("Gameplay", LoadSceneMode.Single);
+        _sceneLoader.LoadScene("Gameplay");
     }
 }

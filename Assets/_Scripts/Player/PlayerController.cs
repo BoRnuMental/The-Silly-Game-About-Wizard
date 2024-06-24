@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _fallingGravityMultiplier;
 
     private Rigidbody2D _rb;
-    private bool _isFalling = false;
     private SoundSystem _soundSystem;
 
     private Vector3 PositionWithOffset
@@ -27,7 +26,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public bool IsGrounded { get; private set; } = false;
-    public bool IsFalling => _isFalling;
+    public bool IsFalling { get; set; } = false;
 
     [Inject]
     private void Construct(SoundSystem soundSystem)
@@ -60,10 +59,10 @@ public class PlayerController : MonoBehaviour
 
     public void Fall()
     {
-        if (IsGrounded || _isFalling) return;
+        if (IsGrounded || IsFalling) return;
         _rb.velocity = new Vector2(_rb.velocity.x, 0f);
         _rb.AddForce(-transform.up * 10, ForceMode2D.Impulse);
-        _isFalling = true;
+        IsFalling = true;
     }
 
     private void CheckGround()
@@ -73,7 +72,7 @@ public class PlayerController : MonoBehaviour
         if (colliders.Length > 0)
         {
             IsGrounded = true;
-            if (_isFalling) _isFalling = false;
+            if (IsFalling) IsFalling = false;
         }
         else IsGrounded = false;          
     }

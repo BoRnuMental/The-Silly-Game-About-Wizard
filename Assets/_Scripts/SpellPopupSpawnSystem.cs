@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using Zenject;
@@ -26,9 +25,7 @@ public class SpellPopupSpawnSystem : MonoBehaviour
         popup.position = playerHit.position;
         var local = popup.GetComponentInChildren<LocalizeStringEvent>();
         local.StringReference.SetReference("SpellDescriptions", _keys[playerHit.spell]);
-        /*var popup = Instantiate(_prefab, playerHit.position, Quaternion.identity, _parent);
-        var local = popup.GetComponentInChildren<LocalizeStringEvent>();
-        local.StringReference.SetReference("SpellDescriptions", _keys[playerHit.spell]);*/
+        CheckOverlaps(popup);
     }
     private void CheckOverlaps(RectTransform rt)
     {
@@ -42,7 +39,7 @@ public class SpellPopupSpawnSystem : MonoBehaviour
     }
     private void Awake()
     {
-        _pool = new Pool<RectTransform>(_prefab, 10, _parent);
+        _pool = new Pool<RectTransform>(_prefab, 5, _parent);
         foreach (var spell in _spellsData.Spells)
             _keys.Add(spell.Spell, spell.LocalizationKey);
         _signalBus.Subscribe<PlayerHitSignal>(SpawnPopup);

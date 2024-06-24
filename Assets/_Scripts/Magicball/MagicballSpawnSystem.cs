@@ -99,7 +99,6 @@ public class MagicBallSpawnSystem : MonoBehaviour
         while (enabled)
         {
             yield return new WaitForSeconds(Frequency);
-            Debug.Log(Frequency);
             if (Frequency != 0f) Spawn();
         }   
     }

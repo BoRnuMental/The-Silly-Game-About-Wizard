@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
 // Entity that controls the game using state machine
@@ -9,6 +8,7 @@ public class GameManager : MonoBehaviour
     private float _prepareTime;
     [SerializeField, Min(0f), Tooltip("Time before the game over menu is shown")]
     private float _showGameOverDelay;
+    [SerializeField, Min(0f)] private float _fadeTime;
 
     private DiContainer _container;
     private GameStateMachine _stateMachine;
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     public float ShowGameOverDelay => _showGameOverDelay;
 
+    public float FadeTime => _fadeTime;
+
     [Inject]
     private void Construct(DiContainer container, SignalBus signalBus)
     {
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-       // Cursor.visible = false;
+        // Cursor.visible = false;
         QualitySettings.maxQueuedFrames = 2;
         _stateMachine = _container.Instantiate<GameStateMachine>();         
         _stateMachine.EnterIn<PrepareState>();
@@ -41,20 +43,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
         return;
-#else
+    #else
         if (!Application.isFocused && _stateMachine.CurrentState is not PauseState)
-        {
             OnPause();
-        }
-#endif
-    }
-    private void OnDestroy()
-    {
-        _signalBus.Unsubscribe<TimerHiddenSignal>(OnPrepareTimerEnded);
-        _signalBus.Unsubscribe<PlayerDiedSignal>(OnPlayerDied);
-        _signalBus.Unsubscribe<PauseButtonPressedSignal>(OnPause);
+    #endif
     }
     private void OnPrepareTimerEnded()
     {
@@ -89,5 +83,11 @@ public class GameManager : MonoBehaviour
             _lastState = _stateMachine.CurrentState;
             _stateMachine.EnterIn<PauseState>();
         }            
+    }
+    private void OnDestroy()
+    {
+        _signalBus.Unsubscribe<TimerHiddenSignal>(OnPrepareTimerEnded);
+        _signalBus.Unsubscribe<PlayerDiedSignal>(OnPlayerDied);
+        _signalBus.Unsubscribe<PauseButtonPressedSignal>(OnPause);
     }
 }

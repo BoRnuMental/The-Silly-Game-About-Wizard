@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
@@ -25,6 +26,7 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private GameObject _settings;
     [SerializeField] private GameObject _tip;
+    [SerializeField] private FadeInOut _fade;
 
     public override void InstallBindings()
     {      
@@ -56,6 +58,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.BindInstance(_timer).AsSingle();
         Container.BindInstance(_stopwatch).AsSingle();
+        Container.BindInstance(_fade).AsSingle();
         Container.BindInstance(_pauseMenu).WithId("PauseMenu");
         Container.BindInstance(_gameOverMenu).WithId("GameOverMenu");
         Container.BindInstance(_settings).WithId("Settings");
